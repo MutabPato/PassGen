@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Welcome to PassGen
+</h1>
+<h2 class="subtitle">
+  Your secure password generator and manager.
+</h2>
+
+<h2>Generate a password</h2>
+{% if generated_password %}
+<h3>Your Generated Password:</h3>
+<p><strong>{{ generated_password }}</strong><p>
+{% endif %}
+<form method="post" action="{{ url_for('main.index') }}">
+        <label for="length">Enter password length:</label>
+        <input type="number" id ="length" name="length" value="12" min="4" max="64" required>
+        <label><input type="checkbox" name="hasLower" id="hasLower">Include lowercase letters</label>
+        <label><input type="checkbox" name="hasUpper" id="hasUpper">Include uppercase letters</label>
+        <label><input type="checkbox" name="hasDigits" id="hasDigits">Include digits</label>
+        <label><input type="checkbox" name="hasSymbols" id="hasSymbols">Include special chars</label>
+        <button type="submit">Generate<button>
+</form>
+{% if generated_password %}
+<h3>Your Generated Password:</h3>
+<p><strong>{{ generated_password }}</strong><p>
+{% endif %}
+
+{% endblock %}
