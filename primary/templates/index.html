@@ -1,30 +1,74 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  Welcome to PassGen
-</h1>
-<h2 class="subtitle">
-  Your secure password generator and manager.
-</h2>
+<div class="columns is-centered">
+	<div class="column is-half">
+		<h1 class="title has-text-centered">
+			Welcome to PassGen
+		</h1>
+		<h2 class="subtitle has-text-centered">
+			Your secure password generator and manager.
+		</h2>
 
-<h2>Generate a password</h2>
-{% if generated_password %}
-<h3>Your Generated Password:</h3>
-<p><strong>{{ generated_password }}</strong><p>
-{% endif %}
-<form method="post" action="{{ url_for('main.index') }}">
-        <label for="length">Enter password length:</label>
-        <input type="number" id ="length" name="length" value="12" min="4" max="64" required>
-        <label><input type="checkbox" name="hasLower" id="hasLower">Include lowercase letters</label>
-        <label><input type="checkbox" name="hasUpper" id="hasUpper">Include uppercase letters</label>
-        <label><input type="checkbox" name="hasDigits" id="hasDigits">Include digits</label>
-        <label><input type="checkbox" name="hasSymbols" id="hasSymbols">Include special chars</label>
-        <button type="submit">Generate<button>
-</form>
-{% if generated_password %}
-<h3>Your Generated Password:</h3>
-<p><strong>{{ generated_password }}</strong><p>
-{% endif %}
+		<div class="box">
+			<h2 class="title is-4">Generate a password</h2>
+			{% if generated_password %}
+			<div class="notification is-success">
+				<h3 class="title is-5">Your Generated Password:</h3>
+				<p><strong>{{ generated_password }}</strong><p>
+			</div>
+			{% endif %}
+			<form method="post" action="{{ url_for('main.index') }}">
+				<div class="field">
+					<label for="length">Enter password length:</label>
+					<div class="control">
+						<input type="number" id ="length" name="length" value="12" min="4" max="64" required>
+					</div>
+				</div>
 
+				<div class="field">
+					<div class="control">
+						<label class="checkbox">
+							<input type="checkbox" name="hasLower" id="hasLower">
+							Include lowercase letters
+						</label>
+					</div>
+				</div>
+
+				<div class="field">
+                                        <div class="control">
+                                                <label class="checkbox">
+                                                        <input type="checkbox" name="hasUpper" id="hasUpper">
+                                                        Include uppercase letters
+                                                </label>
+                                        </div>
+                                </div>
+
+				<div class="field">
+                                        <div class="control">
+                                                <label class="checkbox">
+                                                        <input type="checkbox" name="hasDigits" id="hasDigits">
+                                                        Include digits
+                                                </label>
+                                        </div>
+                                </div>
+
+				<div class="field">
+                                        <div class="control">
+                                                <label class="checkbox">
+                                                        <input type="checkbox" name="hasSymbols" id="hasSymbols">
+                                                        Include special characters
+                                                </label>
+                                        </div>
+                                </div>
+
+				<div class="field">
+                                        <div class="control">
+						<button class="button is-info is-fullwidth" type="submit">Generate</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 {% endblock %}

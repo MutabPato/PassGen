@@ -1,7 +1,67 @@
 {% extends "base.html" %}
+{% block title %}Passwords{% endblock %}
 
 {% block content %}
-<h1 class="title">
-	Welcome, {{ name }}!
-</h1>
+<div class="column is centered">
+	<div class="column is-half">
+		<h1 class="title has-text-centered">
+			Welcome, {{ name }}!
+		</h1>
+
+		<div class="box">
+			<h2 class="title is-4">Add a New Password</h2>
+			<form method="post" action="{{ url_for('main.save_password')}}">
+				<div class="field">
+					<label class="label" for="name">Name:</label>
+					<div class="control">
+						<input class="input" type="text" id ="name" name="name" required>
+					</div>
+				</div>
+
+				<div class="field">
+                                        <label class="label" for="email">Email or Username:</label>
+                                        <div class="control">
+                                                <input class="input" type="text" id ="email" name="email" required>
+                                        </div>
+                                </div>
+
+				<div class="field">
+                                        <label class="label" for="password">Password:</label>
+                                        <div class="control">
+                                                <input class="input" type="password" id ="password" name="password" required>
+                                        </div>
+                                </div>
+
+				<div class="field">
+                                        <div class="control">
+						<button class="button is-info is-fullwidth" type="submit">Save Password</button>
+                                        </div>
+                                </div>
+			</form>
+		</div>
+
+		<h2 class="title is-4 has-text-centered">Saved Passwords</h2>
+		<div class="box">
+			<ul>
+				{% for password in passwords %}
+				<li class="box">
+					<div class="content">
+						<p><strong>Name:</strong> {{ password.name }}</p>
+						<p><strong>Email or Username:</strong> {{ password.email }}</p>
+						<p><strong>Password:</strong> {{ password.password }}</p>
+					</div>
+					<form method="post" action="{{ url_for('main.delete_password', id=password.id) }}">
+						<input type="hidden" name="_method" value="DELETE"> <!-- Hidden input to use DELETE method -->
+						<div classs="field">
+							<div class="control">
+								<button class="button is-danger is-light" type="submit">Delete</button>
+							</div>
+						</div>
+					</form>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
 {% endblock %}

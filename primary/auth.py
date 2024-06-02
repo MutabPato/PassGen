@@ -20,7 +20,7 @@ def login_post():
 
     # Check if user actually exists
     # take user-supplied password, hash it, and compare it to the hashed password in the database
-    if not user and not check_password_hash(user.password, password):
+    if not user or not check_password_hash(user.password, password):
         flash('Please check you login details and try again.')
         return redirect(url_for('auth.login'))
 
