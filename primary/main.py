@@ -6,6 +6,11 @@ import string, random, secrets
 
 main = Blueprint('main', __name__)
 
+
+@main.route('/about')
+def landing():
+    return render_template('landing.html')
+
 @main.route('/', methods=['GET','POST'])
 def index():
     if request.method == 'POST':

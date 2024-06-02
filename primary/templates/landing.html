@@ -1,0 +1,91 @@
+<!-- templates/landing.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassGen - Secure Password Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <style>
+        .hero {
+            background: url('/static/images/hero-bg.jpg') center center/cover no-repeat;
+        }
+        .features {
+            padding: 3em 0;
+        }
+        .features .feature-item {
+            text-align: center;
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar is-transparent">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <strong>PassGen</strong>
+                </a>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                    <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('main.profile') }}" class="navbar-item">Profile</a>
+                    {% else %}
+                        <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
+                        <a href="{{ url_for('auth.signup') }}" class="navbar-item">Sign Up</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero is-primary is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                    Welcome to PassGen
+                </h1>
+                <h2 class="subtitle">
+                    Your secure password generator and manager.
+                </h2>
+                <a href="{{ url_for('auth.signup') }}" class="button is-large is-info">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <h2 class="title has-text-centered">Features</h2>
+            <div class="columns">
+                <div class="column feature-item">
+                    <h3 class="title is-4">Secure Generation</h3>
+                    <p>Generate secure passwords with a single click.</p>
+                </div>
+                <div class="column feature-item">
+                    <h3 class="title is-4">Easy Management</h3>
+                    <p>Store and manage all your passwords in one place.</p>
+                </div>
+                <div class="column feature-item">
+                    <h3 class="title is-4">User-Friendly</h3>
+                    <p>Simple and intuitive interface for everyone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>PassGen</strong> by <a href="https://github.com/MutabPato">MutabPato</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
