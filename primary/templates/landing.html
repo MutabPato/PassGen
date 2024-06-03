@@ -1,4 +1,3 @@
-<!-- templates/landing.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
     <style>
         .hero {
-            background: url('/static/images/hero-bg.jpg') center center/cover no-repeat;
+            background: url('/static/images/logo.png') center center/cover no-repeat;
         }
         .features {
             padding: 3em 0;
@@ -17,6 +16,12 @@
             text-align: center;
             padding: 1em;
         }
+	.about-section {
+		padding: 2em 0;
+	}
+	.about-section .content {
+		text-align: center;
+	}
     </style>
 </head>
 <body>
@@ -47,12 +52,12 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title">
-                    Welcome to PassGen
+                    PassGen
                 </h1>
                 <h2 class="subtitle">
                     Your secure password generator and manager.
                 </h2>
-                <a href="{{ url_for('auth.signup') }}" class="button is-large is-info">Get Started</a>
+                <a href="{{ url_for('auth.signup') }}" class="button is-large is-info">Try It Now</a>
             </div>
         </div>
     </section>
@@ -64,16 +69,37 @@
             <div class="columns">
                 <div class="column feature-item">
                     <h3 class="title is-4">Secure Generation</h3>
+		    <img src="/static/images/secure-generation.png" alt="Secure Generation">
                     <p>Generate secure passwords with a single click.</p>
                 </div>
                 <div class="column feature-item">
                     <h3 class="title is-4">Easy Management</h3>
+		    <img src="/static/images/easy-management.png" alt="Easy Management">
                     <p>Store and manage all your passwords in one place.</p>
                 </div>
                 <div class="column feature-item">
                     <h3 class="title is-4">User-Friendly</h3>
+		    <img src="/static/images/user-friendly.png" alt="User-Friendly">
                     <p>Simple and intuitive interface for everyone.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+	
+	
+    <!-- About Section -->
+    <section class="section about-section">
+        <div class="container">
+            <h2 class="title has-text-centered">About</h2>
+            <div class="content">
+                <p>This project was inspired by my day-to-day job. I use many tools and services at work and often need to generate strong passwords when signing up, be able to remember them when logging in, and access them when I'm working away from my usual desktop. This necessity drove me to create PassGen, a secure and easy-to-use password generator and manager.</p>
+                <p>My goal was to create a tool that helps users generate strong passwords and store them safely. This project was developed as a portfolio project for ALX SE foundations.</p>
+                <p>Team Members:</p>
+                <ul>
+                    <li>Patrick - <a href="https://www.linkedin.com/in/mutabazipatrick">LinkedIn</a> | <a href="https://github.com/MutabPato">GitHub</a> | <a href="https://twitter.com/mutab_pato">Twitter</a></li>
+                    <!-- Add more team members if applicable -->
+                </ul>
+                <p>Project Repository: <a href="https://github.com/MutabPato/PassGen">GitHub</a></p>
             </div>
         </div>
     </section>
