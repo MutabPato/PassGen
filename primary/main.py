@@ -88,3 +88,7 @@ def delete_password(id):
     flash('Password entry deleted successfully.')
 
     return redirect(url_for('main.profile'))
+
+
+if __name__ == '__main__':
+    main.run()
